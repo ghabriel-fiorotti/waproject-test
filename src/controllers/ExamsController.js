@@ -1,5 +1,4 @@
 const ExamsService = require('../services/ExamsService')
-require('dotenv').config()
 
 module.exports = {
     list: async (req, res) => {
@@ -13,7 +12,6 @@ module.exports = {
     },
 
     update: async (req, res) => {
-        console.log(req.params.id)
         const response = await ExamsService.update(req.body, req.params.id)
         return res.status(response.status_code).json(response);
     },

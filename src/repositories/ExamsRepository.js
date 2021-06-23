@@ -3,7 +3,7 @@ const db = require('../../db')
 module.exports = {
     list: async () => {
         try {
-            const response = await db('exams').where({'status_exam': 'ativo', 'deleted_at' : null});
+            const response = await db('exams').where({'deleted_at' : null});
             return response;
         } catch (error) {
             return error;
@@ -33,7 +33,16 @@ module.exports = {
 
     delete : async (id) => {
         try {
-            const response = await db('exams').where({'id' : id}).update({deleted_at : new Date()});
+            const response = await db('exams').where({'id' : id}).update({status_exam : "inativo", deleted_at : new Date() });
+            return response;
+        } catch (error) {
+            return error;
+        }
+    },
+
+    validActiveTrueExam : async (id) => {
+        try {
+            const response = await db('exams').where({id : id, status_exam : "ativo"});
             return response;
         } catch (error) {
             return error;
