@@ -18,17 +18,21 @@ module.exports = {
 
     insert: async (data) => {
         try {
-            const response = await LaboratoriesRepository.insert(data);
-            return { "message": "Laboratório inserido com sucesso", "response": data, "status_code": 201 }
+            for (let index = 0; index < data.length; index++) {
+                const response = await LaboratoriesRepository.insert(data[index]);  
+            }
+            return { "message": "Laboratório(s) inserido(s) com sucesso", "response": data, "status_code": 201 }
         } catch (error) {
             return { "message": "Erro no banco de dados", "status_code": 422 }
         }
     },
 
-    update: async (data, id) => {
+    update: async (data) => {
         try {
-            const response = await LaboratoriesRepository.update(data, id)
-            return { "message": "Laboratório atualizado com sucesso", "response" : data, "status_code": 200 }
+            for (let index = 0; index < data.length; index++) {
+                const response = await LaboratoriesRepository.update(data[index])   
+            }
+            return { "message": "Laboratório(s) atualizado(s) com sucesso", "response" : data, "status_code": 200 }
         } catch (error) {
             return { "message": "Erro no banco de dados", "status_code": 422, error }
         }
@@ -36,8 +40,12 @@ module.exports = {
 
     delete: async (id) => {
         try {
-            const response = await LaboratoriesRepository.delete(id);
-            return { "message": "Laboratório deletado com sucesso", "status_code": 200 }
+            
+            for (let index = 0; index < id.length; index++) {
+                console.log(id[index]);
+                const response = await LaboratoriesRepository.delete(id[index]);
+            }
+            return { "message": "Laboratório(s) deletado(s) com sucesso", "status_code": 200 }
         } catch (error) {
             return { "message": "Erro no banco de dados", "status_code": 422, error }
         }

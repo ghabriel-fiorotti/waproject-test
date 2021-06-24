@@ -7,17 +7,17 @@ module.exports = {
     },
 
     insert: async (req, res) => {
-        const response = await ExamsService.insert(req.body)
+        const response = await ExamsService.insert(req.body.exams)
         return res.status(response.status_code).json(response);
     },
 
     update: async (req, res) => {
-        const response = await ExamsService.update(req.body, req.params.id)
+        const response = await ExamsService.update(req.body.exams)
         return res.status(response.status_code).json(response);
     },
 
     delete: async (req, res) => {
-        const response = await ExamsService.delete(req.params.id);
+        const response = await ExamsService.delete(req.body.id);
         return res.status(response.status_code).json(response);
     }
 }

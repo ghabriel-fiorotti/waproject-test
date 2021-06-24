@@ -10,6 +10,15 @@ module.exports = {
         }
     },
 
+    getId: async (exam) => {
+        try {
+            const response = await db('exams').where({exam_name : exam}).select('id')
+            return response;
+        } catch (error) {
+            return error;
+        }
+    },
+
     insert: async (data) => {
         try {
             const {exam_name, type_exam} = data;
@@ -21,9 +30,9 @@ module.exports = {
     },
 
 
-    update : async (data, id) => {
+    update : async (data) => {
         try {
-            const { exam_name, type_exam, status_exam } = data;
+            const { id, exam_name, type_exam, status_exam } = data;
             const response = await db('exams').where({'id' : id}).update({exam_name, type_exam, status_exam});
             return response;
         } catch (error) {

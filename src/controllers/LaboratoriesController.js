@@ -7,17 +7,17 @@ module.exports = {
     },
 
     insert: async (req, res) => {
-        const response = await LaboratoriesService.insert(req.body)
+        const response = await LaboratoriesService.insert(req.body.laboratories)
         return res.status(response.status_code).json(response);
     },
 
     update: async (req, res) => {
-        const response = await LaboratoriesService.update(req.body, req.params.id)
+        const response = await LaboratoriesService.update(req.body.laboratories)
         return res.status(response.status_code).json(response);
     },
 
     delete: async (req, res) => {
-        const response = await LaboratoriesService.delete(req.params.id);
+        const response = await LaboratoriesService.delete(req.body.id);
         return res.status(response.status_code).json(response);
     }
 }

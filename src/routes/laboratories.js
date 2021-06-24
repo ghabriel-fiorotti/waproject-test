@@ -4,8 +4,8 @@ const LaboratoriesController = require('../controllers/LaboratoriesController');
 
 router.get('/', LaboratoriesController.list);
 router.post('/insert', LaboratoriesController.insert);
-router.put('/update/:id', LaboratoriesController.update);
-router.delete('/delete/:id', LaboratoriesController.delete);
+router.put('/update', LaboratoriesController.update);
+router.delete('/delete', LaboratoriesController.delete);
 
 module.exports = router;
 

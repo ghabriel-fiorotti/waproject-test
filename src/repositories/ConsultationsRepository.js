@@ -1,7 +1,7 @@
 const db = require('../../db')
 
 module.exports = {
-
+    
     insert: async (laboratory_id, exam_id) => {
         try {
             const response = await db('association').insert({laboratory_id, exam_id});

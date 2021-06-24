@@ -18,17 +18,29 @@ module.exports = {
 
     insert: async (data) => {
         try {
-            const response = await ExamsRepository.insert(data);
-            return { "message": "Exame inserido com sucesso", "response": data, "status_code": 201 }
+            let noExistExam = [];
+            for (let index = 0; index < data.length; index++) {
+                const existExam = await ExamsRepository.getId(data[index].exam_name);
+                if (existExam.length == 0) {
+                    noExistExam.push(data[index].exam_name);
+                    const response = await ExamsRepository.insert(data[index]);
+                }
+            }
+            if (noExistExam.length == 0) {
+                return { "message": "Todos os exames já existem no banco de dados", "response": data, "status_code": 401 }
+            }
+            return { "message": `Exame(s) ${noExistExam} inserido(s) com sucesso`, "response": data, "status_code": 201 }
         } catch (error) {
             return { "message": "Erro no banco de dados", "status_code": 422 }
         }
     },
 
-    update: async (data, id) => {
+    update: async (data) => {
         try {
-            const response = await ExamsRepository.update(data, id)
-            return { "message": "Exame atualizado com sucesso", "response" : data, "status_code": 200 }
+            for (let index = 0; index < data.length; index++) {
+                const response = await ExamsRepository.update(data[index]);
+            }
+            return { "message": "Exame(s) atualizado(s) com sucesso", "response": data, "status_code": 200 }
         } catch (error) {
             return { "message": "Erro no banco de dados", "status_code": 422, error }
         }
@@ -36,8 +48,10 @@ module.exports = {
 
     delete: async (id) => {
         try {
-            const response = await ExamsRepository.delete(id);
-            return { "message": "Exame deletado com sucesso", "status_code": 200 }
+            for (let index = 0; index < id.length; index++) {
+                const response = await ExamsRepository.delete(id[index]);
+            }
+            return { "message": "Exame(s) deletado(s) com sucesso", "status_code": 200 }
         } catch (error) {
             return { "message": "Erro no banco de dados", "status_code": 422, error }
         }
