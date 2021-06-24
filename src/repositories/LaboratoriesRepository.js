@@ -13,7 +13,8 @@ module.exports = {
     listJoin: async (exam) => {
         try {
             const response = await db('laboratories').join('association', 'laboratory_id', '=', 'laboratories.id')
-            .where({'association.exam_id': exam}).select('laboratories.laboratory_name');
+                .join('exams', 'association.exam_id', '=', 'exams.id', 'exams.exam_name', '=', exam)
+                .select('laboratories.laboratory_name');
             return response;
         } catch (error) {
             return error;

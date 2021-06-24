@@ -20,7 +20,7 @@ module.exports = {
         try {
             let noExistExam = [];
             for (let index = 0; index < data.length; index++) {
-                const existExam = await ExamsRepository.getId(data[index].exam_name);
+                const existExam = await ExamsRepository.verifyExist(data[index].exam_name);
                 if (existExam.length == 0) {
                     noExistExam.push(data[index].exam_name);
                     const response = await ExamsRepository.insert(data[index]);

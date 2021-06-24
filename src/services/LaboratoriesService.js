@@ -19,7 +19,7 @@ module.exports = {
     insert: async (data) => {
         try {
             for (let index = 0; index < data.length; index++) {
-                const response = await LaboratoriesRepository.insert(data[index]);  
+                const response = await LaboratoriesRepository.insert(data[index]);
             }
             return { "message": "Laboratório(s) inserido(s) com sucesso", "response": data, "status_code": 201 }
         } catch (error) {
@@ -30,9 +30,9 @@ module.exports = {
     update: async (data) => {
         try {
             for (let index = 0; index < data.length; index++) {
-                const response = await LaboratoriesRepository.update(data[index])   
+                const response = await LaboratoriesRepository.update(data[index])
             }
-            return { "message": "Laboratório(s) atualizado(s) com sucesso", "response" : data, "status_code": 200 }
+            return { "message": "Laboratório(s) atualizado(s) com sucesso", "response": data, "status_code": 200 }
         } catch (error) {
             return { "message": "Erro no banco de dados", "status_code": 422, error }
         }
@@ -40,7 +40,7 @@ module.exports = {
 
     delete: async (id) => {
         try {
-            
+
             for (let index = 0; index < id.length; index++) {
                 console.log(id[index]);
                 const response = await LaboratoriesRepository.delete(id[index]);
