@@ -1,4 +1,4 @@
-const ConsultationsRepository = require('../repositories/ConsultationsRepository');
+const ConsultationsRepository = require('../repositories/AssociationsRepository');
 const LaboratoriesRepository = require('../repositories/LaboratoriesRepository');
 const ExamsRepository = require('../repositories/ExamsRepository');
 

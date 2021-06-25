@@ -1,0 +1,492 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Project WA - Test",
+    "description": "Routes documentations."
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Laboratories",
+      "description": "Endpoints"
+    },
+    {
+      "name": "Exams",
+      "description": "Endpoints"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "securityDefinitions": {
+    "apiKeyAuth": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-API-KEY",
+      "description": "any description..."
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/laboratories/": {
+      "get": {
+        "tags": [
+          "Laboratories"
+        ],
+        "description": "Endpoint para ____FUNC____ todos os laboratórios",
+        "parameters": [],
+        "responses": {},
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/laboratories/insert": {
+      "post": {
+        "tags": [
+          "Laboratories"
+        ],
+        "description": "Endpoint para inserir laboratórios",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Informações do laboratório.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InsertLaboratories"
+            }
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/laboratories/update": {
+      "put": {
+        "tags": [
+          "Laboratories"
+        ],
+        "description": "Endpoint para atualizar laboratórios",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "informação dos laboratórios a serem excluídos.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateLaboratories"
+            }
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/laboratories/delete": {
+      "delete": {
+        "tags": [
+          "Laboratories"
+        ],
+        "description": "Endpoint para remover laboratórios",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Id dos laboratórios a serem excluídos.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeleteLaboratories"
+            }
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/exams/": {
+      "get": {
+        "tags": [
+          "Exams"
+        ],
+        "description": "Endpoint para ____FUNC____ todos os exames",
+        "parameters": [],
+        "responses": {},
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/exams/insert": {
+      "post": {
+        "tags": [
+          "Exams"
+        ],
+        "description": "Endpoint para inserir exames",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Informações do exame.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InsertExams"
+            }
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/exams/update": {
+      "put": {
+        "tags": [
+          "Exams"
+        ],
+        "description": "Endpoint para atualizar exames",
+        "parameters": [
+          {
+            "name": "array obj",
+            "in": "body",
+            "description": "Informações do exame.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateExams"
+            }
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/exams/delete": {
+      "delete": {
+        "tags": [
+          "Exams"
+        ],
+        "description": "Endpoint para deletar exames",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Id dos exames.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeleteExams"
+            }
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/associations/list/{exam}": {
+      "get": {
+        "tags": [
+          "Associations"
+        ],
+        "description": "Endpoint para ____FUNC____ todos os laboratórios vinculados a um exame passado o nome por parâmetro da rota",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/associations/insert/{idExam}": {
+      "post": {
+        "tags": [
+          "Associations"
+        ],
+        "description": "Endpoint para inserir exames",
+        "parameters": [
+          {
+            "name": "idExam",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Id dos laboratórios a serem vinculados com o Id do exame por paramêtro da rota.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InsertAssociations"
+            }
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/associations/remove": {
+      "delete": {
+        "tags": [
+          "Associations"
+        ],
+        "description": "Endpoint para inserir exames",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Id dos laboratórios a serem excluídos",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InsertAssociations"
+            }
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "InsertExams": {
+      "type": "object",
+      "properties": {
+        "exams": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "exam_name": {
+                "type": "string",
+                "example": "teste"
+              },
+              "type_exam": {
+                "type": "string",
+                "example": "analise clinica"
+              }
+            },
+            "required": [
+              "exam_name",
+              "type_exam"
+            ]
+          }
+        }
+      }
+    },
+    "UpdateExams": {
+      "type": "object",
+      "properties": {
+        "exams": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number",
+                "example": 7
+              },
+              "exam_name": {
+                "type": "string",
+                "example": "sssss"
+              },
+              "status_exam": {
+                "type": "string",
+                "example": "inativo"
+              },
+              "type_exam": {
+                "type": "string",
+                "example": "imagem"
+              }
+            },
+            "required": [
+              "id",
+              "exam_name",
+              "status_exam",
+              "type_exam"
+            ]
+          }
+        }
+      }
+    },
+    "DeleteExams": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "array",
+          "example": [
+            1,
+            2
+          ],
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "InsertLaboratories": {
+      "type": "object",
+      "properties": {
+        "laboratories": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "laboratory_name": {
+                "type": "string",
+                "example": "SALA 03"
+              },
+              "address": {
+                "type": "string",
+                "example": "lksdjfkldsjfds fdsfdsf"
+              }
+            },
+            "required": [
+              "laboratory_name",
+              "address"
+            ]
+          }
+        }
+      }
+    },
+    "UpdateLaboratories": {
+      "type": "object",
+      "properties": {
+        "laboratories": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number",
+                "example": 3
+              },
+              "laboratory_name": {
+                "type": "string",
+                "example": "Olá"
+              },
+              "status_lab": {
+                "type": "string",
+                "example": "inativo"
+              },
+              "address": {
+                "type": "string",
+                "example": "teste"
+              }
+            },
+            "required": [
+              "id",
+              "laboratory_name",
+              "status_lab",
+              "address"
+            ]
+          }
+        }
+      }
+    },
+    "DeleteLaboratories": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "array",
+          "example": [
+            1,
+            2
+          ],
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "InsertAssociations": {
+      "type": "object",
+      "properties": {
+        "idLaboratories": {
+          "type": "array",
+          "example": [
+            1,
+            2
+          ],
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "required": [
+        "idLaboratories"
+      ]
+    },
+    "DeleteAssociations": {
+      "type": "object",
+      "properties": {
+        "idAssociations": {
+          "type": "array",
+          "example": [
+            2,
+            5
+          ],
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "required": [
+        "idAssociations"
+      ]
+    }
+  }
+}
