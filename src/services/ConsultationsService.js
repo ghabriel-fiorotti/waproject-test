@@ -34,7 +34,7 @@ module.exports = {
             if (activeLaboratories.length == 0) {
                 return { "message": "Os laboratórios não existem ou estão inativos", "status_code": 401 }
             }
-            return { "message": `O(s) laboratório(s) ${activeLaboratories} foram vinculados com sucesso ao exame ${idExam}`, "response": activeLaboratories, "status_code": 201 }
+            return { "message": `O(s) laboratório(s) ${activeLaboratories} foi(foram) vinculado(s) com sucesso ao exame ${idExam}`, "response": activeLaboratories, "status_code": 201 }
         } catch (error) {
             return { "message": "Erro no banco de dados", "status_code": 422 }
         }
