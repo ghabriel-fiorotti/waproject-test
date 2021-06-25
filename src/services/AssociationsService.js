@@ -20,7 +20,7 @@ module.exports = {
         try {
             const activeTrueExam = await ExamsRepository.validActiveTrueExam(idExam);
             if (activeTrueExam.length == 0) {
-                return { "message": "Exame inativo ou inexistente", "response": data, "status_code": 400 }
+                return { "message": "Exame inativo ou inexistente", "response": data, "status_code": 204 }
             }
             let activeLaboratories = [];
             for (let index = 0; index < data.length; index++) {
@@ -32,7 +32,7 @@ module.exports = {
                 }
             }
             if (activeLaboratories.length == 0) {
-                return { "message": "Os laboratórios não existem ou estão inativos", "status_code": 401 }
+                return { "message": "Os laboratórios não existem ou estão inativos", "status_code": 204 }
             }
             return { "message": `O(s) laboratório(s) ${activeLaboratories} foi(foram) vinculado(s) com sucesso ao exame ${idExam}`, "response": activeLaboratories, "status_code": 201 }
         } catch (error) {
@@ -46,7 +46,7 @@ module.exports = {
 
                 const response = await ConsultationsRepository.remove(idConsultations[index]);
             }
-            return { "message": "Consulta(s) deletada com sucesso", "status_code": 200 }
+            return { "message": "Consulta(s) deletada com sucesso", "status_code": 201 }
         } catch (error) {
             return { "message": "Erro no banco de dados", "status_code": 422, error }
         }

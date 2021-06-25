@@ -8,7 +8,7 @@ module.exports = {
         try {
             response = await LaboratoriesRepository.list();
             if (response.length === 0) {
-                return { "message": "Nenhum resultado encontrado", "status_code": 200 }
+                return { "message": "Nenhum resultado encontrado", "status_code": 204 }
             }
             return { "message": "Busca realizada com sucesso", "response": response, "status_code": 200 }
         } catch (error) {
@@ -32,7 +32,7 @@ module.exports = {
             for (let index = 0; index < data.length; index++) {
                 const response = await LaboratoriesRepository.update(data[index])
             }
-            return { "message": "Laboratório(s) atualizado(s) com sucesso", "response": data, "status_code": 200 }
+            return { "message": "Laboratório(s) atualizado(s) com sucesso", "response": data, "status_code": 201 }
         } catch (error) {
             return { "message": "Erro no banco de dados", "status_code": 422, error }
         }

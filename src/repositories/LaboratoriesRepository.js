@@ -3,7 +3,7 @@ const db = require('../../db')
 module.exports = {
     list: async () => {
         try {
-            const response = await db('laboratories').where({ 'deleted_at': null });
+            const response = await db('laboratories').where({ 'deleted_at': null }).select('id', 'laboratory_name', 'address');
             return response;
         } catch (error) {
             return error;

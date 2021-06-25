@@ -8,7 +8,7 @@ module.exports = {
         try {
             response = await ExamsRepository.list();
             if (response.length === 0) {
-                return { "message": "Nenhum resultado encontrado", "status_code": 200 }
+                return { "message": "Nenhum resultado encontrado", "status_code": 204 }
             }
             return { "message": "Busca realizada com sucesso", "response": response, "status_code": 200 }
         } catch (error) {
@@ -27,7 +27,7 @@ module.exports = {
                 }
             }
             if (noExistExam.length == 0) {
-                return { "message": "Todos os exames já existem no banco de dados", "response": data, "status_code": 401 }
+                return { "message": "Todos os exames já existem no banco de dados", "response": data, "status_code": 422 }
             }
             return { "message": `Exame(s) ${noExistExam} inserido(s) com sucesso`, "response": data, "status_code": 201 }
         } catch (error) {
@@ -40,7 +40,7 @@ module.exports = {
             for (let index = 0; index < data.length; index++) {
                 const response = await ExamsRepository.update(data[index]);
             }
-            return { "message": "Exame(s) atualizado(s) com sucesso", "response": data, "status_code": 200 }
+            return { "message": "Exame(s) atualizado(s) com sucesso", "response": data, "status_code": 201 }
         } catch (error) {
             return { "message": "Erro no banco de dados", "status_code": 422, error }
         }
@@ -51,7 +51,7 @@ module.exports = {
             for (let index = 0; index < id.length; index++) {
                 const response = await ExamsRepository.delete(id[index]);
             }
-            return { "message": "Exame(s) deletado(s) com sucesso", "status_code": 200 }
+            return { "message": "Exame(s) deletado(s) com sucesso", "status_code": 201 }
         } catch (error) {
             return { "message": "Erro no banco de dados", "status_code": 422, error }
         }
