@@ -1,8 +1,8 @@
 FROM node:14
 
-WORKDIR ./
+WORKDIR /api
 
-COPY package*.json ./
+COPY package*.json /api
 RUN npm install
 
-COPY . ./
+COPY . /api
