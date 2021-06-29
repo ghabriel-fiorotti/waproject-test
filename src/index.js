@@ -1,12 +1,13 @@
 const swaggerUi = require('swagger-ui-express')
-const swaggerFile = require('./swagger_output.json')
+const swaggerFile = require('../swagger_output.json')
 
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3000
-const laboratories = require('./src/routes/laboratories');
-const exams = require('./src/routes/exams');
-const associations = require('./src/routes/associations');
+
+
+const laboratories = require('./routes/laboratories');
+const exams = require('./routes/exams');
+const associations = require('./routes/associations');
 
 app.use(express.json());
 
@@ -17,11 +18,15 @@ app.use('/associations', associations);
 
 app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
+
+
 app.use('/swagger-generator', (req, res) => {
-    const swagger = require('./swagger');
+    const swagger = require('../swagger');
     return res.json('[Swagger created]').status(200);
 })
 
-app.listen(PORT);
+app.get('/', (req, res) => {
+    res.send({ "message" : 'servidor rodando'})
+})
 
-console.log('Running at Port '+ PORT );
+module.exports = app;

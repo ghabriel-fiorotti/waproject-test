@@ -15,6 +15,10 @@
     {
       "name": "Exams",
       "description": "Endpoints"
+    },
+    {
+      "name": "Associations",
+      "description": "Endpoints"
     }
   ],
   "schemes": [

@@ -8,7 +8,7 @@ module.exports = {
         try {
             response = await LaboratoriesRepository.list();
             if (response.length === 0) {
-                return { "message": "Nenhum resultado encontrado", "status_code": 204 }
+                return { "message": "Nenhum resultado encontrado", "status_code": 200 }
             }
             return { "message": "Busca realizada com sucesso", "response": response, "status_code": 200 }
         } catch (error) {
@@ -39,13 +39,14 @@ module.exports = {
     },
 
     delete: async (id) => {
-        try {
-
-            for (let index = 0; index < id.length; index++) {
-                console.log(id[index]);
-                const response = await LaboratoriesRepository.delete(id[index]);
+        try {  
+            let verifyId = await LaboratoriesRepository.verifyId(id);
+            if(verifyId.length < 1){
+                return { "message": "Laboratórios inválidos", "status_code": 422 }
             }
-            return { "message": "Laboratório(s) deletado(s) com sucesso", "status_code": 200 }
+            const response = await LaboratoriesRepository.delete(id);
+            console.log(response);
+            return { "message": `Laboratório(s) deletado(s) com sucesso : ${response}`, "status_code": 201 }
         } catch (error) {
             return { "message": "Erro no banco de dados", "status_code": 422, error }
         }

@@ -1,6 +1,16 @@
 const db = require('../../db')
 
 module.exports = {
+
+    verifyId: async (id) => {
+        try {
+            const response = await db('laboratories').whereIn('id', id).where('deleted_at', null)
+            return response;
+        } catch (error) {
+            console.log(error);
+        }
+    },
+
     list: async () => {
         try {
             const response = await db('laboratories').where({ 'deleted_at': null }).select('id', 'laboratory_name', 'address');
@@ -44,7 +54,7 @@ module.exports = {
 
     delete: async (id) => {
         try {
-            const response = await db('laboratories').where({ 'id': id }).update({ status_lab: "inativo", deleted_at: new Date() });
+            const response = await db('laboratories').whereIn( 'id', id ).update({ status_lab: "inativo", deleted_at: new Date() });
             return response;
         } catch (error) {
             return error;

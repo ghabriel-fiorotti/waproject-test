@@ -8,7 +8,7 @@ module.exports = {
         try {
             response = await ExamsRepository.list();
             if (response.length === 0) {
-                return { "message": "Nenhum resultado encontrado", "status_code": 204 }
+                return { "message": "Nenhum resultado encontrado", "status_code": 200 }
             }
             return { "message": "Busca realizada com sucesso", "response": response, "status_code": 200 }
         } catch (error) {
@@ -48,10 +48,13 @@ module.exports = {
 
     delete: async (id) => {
         try {
-            for (let index = 0; index < id.length; index++) {
-                const response = await ExamsRepository.delete(id[index]);
+            let verifyId = await ExamsRepository.verifyId(id);
+            console.log(verifyId.length);
+            if(verifyId.length < 1){
+                return { "message": "Exames inválidos", "status_code": 422 }
             }
-            return { "message": "Exame(s) deletado(s) com sucesso", "status_code": 201 }
+            const response = await ExamsRepository.delete(id);
+            return { "message": "Exames(s) deletado(s) com sucesso", "status_code": 201 }
         } catch (error) {
             return { "message": "Erro no banco de dados", "status_code": 422, error }
         }

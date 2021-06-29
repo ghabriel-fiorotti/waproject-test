@@ -7,9 +7,7 @@ module.exports = {
 
     list: async (exam) => {
         try {
-            console.log(exam);
             const response = await LaboratoriesRepository.listJoin(exam);
-
             return { "message": "Busca realizada com sucesso", "response": response, "status_code": 200 }
         } catch (error) {
             return { "message": "Erro no banco de dados", "status_code": 422 }
