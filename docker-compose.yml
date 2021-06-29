@@ -2,12 +2,12 @@ version: '3'
 
 services:
   api:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    volumes:
-      - ./:/api
+    build: .
     ports:
       - "3000:3000"
-    command: npm run start
-    container_name: api
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_DATABASE: ${DB_DATABASE}
+    command: npm start --env=dev

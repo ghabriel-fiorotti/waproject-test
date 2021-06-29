@@ -1,4 +1,5 @@
 const swaggerAutogen = require('swagger-autogen')()
+require('dotenv').config()
 
 const doc = {
     info: {
@@ -6,8 +7,8 @@ const doc = {
         title: "Project WA - Test",
         description: "Routes documentations."
     },
-    host: "localhost:3000",
-    basePath: "/",
+    host: process.env.URL_HOST,
+    basePath: "",
     schemes: ['http', 'https'],
     consumes: ['application/json'],
     produces: ['application/json'],
@@ -108,7 +109,7 @@ const doc = {
 }
 
 const outputFile = './swagger_output.json'
-const endpointsFiles = ['./index.js']
+const endpointsFiles = ['./src/index.js']
 
 swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {
     require('./server')           // Your project's root file

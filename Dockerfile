@@ -1,8 +1,11 @@
 FROM node:14
 
-WORKDIR /api
+WORKDIR /usr/api/
 
-COPY package*.json /api
+COPY package*.json ./
 RUN npm install
 
-COPY . /api
+COPY . .
+
+EXPOSE 3000
+CMD ["npm", "start"]

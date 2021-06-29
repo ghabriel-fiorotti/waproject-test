@@ -49,12 +49,11 @@ module.exports = {
     delete: async (id) => {
         try {
             let verifyId = await ExamsRepository.verifyId(id);
-            console.log(verifyId.length);
             if(verifyId.length < 1){
                 return { "message": "Exames inválidos", "status_code": 422 }
             }
             const response = await ExamsRepository.delete(id);
-            return { "message": "Exames(s) deletado(s) com sucesso", "status_code": 201 }
+            return { "message": `Exames(s) deletado(s) com sucesso: ${response}`, "status_code": 201 }
         } catch (error) {
             return { "message": "Erro no banco de dados", "status_code": 422, error }
         }

@@ -5,8 +5,8 @@
     "title": "Project WA - Test",
     "description": "Routes documentations."
   },
-  "host": "localhost:3000",
-  "basePath": "/",
+  "host": "/",
+  "basePath": "",
   "tags": [
     {
       "name": "Laboratories",

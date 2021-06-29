@@ -45,7 +45,6 @@ module.exports = {
                 return { "message": "Laboratórios inválidos", "status_code": 422 }
             }
             const response = await LaboratoriesRepository.delete(id);
-            console.log(response);
             return { "message": `Laboratório(s) deletado(s) com sucesso : ${response}`, "status_code": 201 }
         } catch (error) {
             return { "message": "Erro no banco de dados", "status_code": 422, error }
