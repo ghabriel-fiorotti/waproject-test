@@ -39,7 +39,7 @@ module.exports = {
                 in: 'body',
                 description: 'Id dos laboratórios a serem excluídos',
                 required: true,
-                schema: { $ref: "#/definitions/InsertAssociations" }
+                schema: { $ref: "#/definitions/DeleteAssociations" }
         } /
 
         / #swagger.security = [{

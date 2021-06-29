@@ -23,7 +23,7 @@ module.exports = {
 
     verifyExist: async (exam) => {
         try {
-            const response = await db('exams').where({ exam_name: exam}).andWhere('deleted_at', null)
+            const response = await db('exams').where({ exam_name: exam }).where('deleted_at', null)
             return response;
         } catch (error) {
             return error;

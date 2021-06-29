@@ -43,7 +43,7 @@ const doc = {
                     $type_exam: "analise clinica"
                 },
                 {
-                    $exam_name: "teste",
+                    $exam_name: "fezes",
                     $type_exam: "analise clinica"
                 }
             ]
@@ -51,14 +51,14 @@ const doc = {
         UpdateExams: {
             exams: [
                 {
-                    $id: 6,
-                    $exam_name: "tessdfdsfdsfdsfte",
+                    $id: 1,
+                    $exam_name: "Exame cardiológico",
                     $status_exam: "ativo",
                     $type_exam: "imagem"
                 },
                 {
-                    $id: 7,
-                    $exam_name: "sssss",
+                    $id: 2,
+                    $exam_name: "Ultrassom",
                     $status_exam: "inativo",
                     $type_exam: "imagem"
                 }
@@ -71,11 +71,11 @@ const doc = {
             laboratories: [
                 {
                     $laboratory_name: "SALA 05",
-                    $address: "Endereço tal"
+                    $address: "Superior"
                 },
                 {
                     $laboratory_name: "SALA 03",
-                    $address: "lksdjfkldsjfds fdsfdsf"
+                    $address: "Centro"
                 }
             ]
         },
@@ -83,15 +83,15 @@ const doc = {
             laboratories: [
                 {
                     $id: 4,
-                    $laboratory_name: "Olá",
+                    $laboratory_name: "SALA 01",
                     $status_lab: "ativo",
-                    $address: "teste"
+                    $address: "Esquerda Superior"
                 },
                 {
                     $id: 3,
-                    $laboratory_name: "Olá",
+                    $laboratory_name: "SALA 02",
                     $status_lab: "inativo",
-                    $address: "teste"
+                    $address: "Direita Superior"
                 }
             ]
         },
@@ -102,7 +102,7 @@ const doc = {
             $idLaboratories: [1, 2]
         },
         DeleteAssociations: {
-            $idAssociations: [2, 5]
+            $idAssociations: [1, 2]
         }
 
     }
